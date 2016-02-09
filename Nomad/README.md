@@ -1,5 +1,5 @@
 
-Nomad is a Windows Desktop Application that allows the user to quickly look at Avanade Job Postings.
+Avanade Job Finder is a Windows Desktop Application that allows the user to quickly look at Avanade Job Postings.
 
 The program downloads the latest 1,000 job postings from Avanade.com in JSON format into a file automatically formatted for today's date and time stamp.
 
@@ -9,5 +9,5 @@ Historically the user can view how the job postings are changing based on the la
 
 The application also allows the user to mark job postings they are not interested in or apply for those they are interested in.
 
-
+vs code test
  
