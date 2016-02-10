@@ -18,7 +18,7 @@ namespace Nomad
         private string GetFileName(string file)
         {
             string[] FileParts = file.Split('\\');
-            return FileParts[FileParts.Length - 1];
+            return FileParts[FileParts.Length - 1]; 
         }
 
         private void ClearGrid()
