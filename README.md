@@ -1,7 +1,6 @@
 # Nomad
 
-Nomad is a Windows Desktop Application that allows the user to quickly manage Avanade Job Postings. For the professional seeking a career at Avanade it's a great tool for finding new job postings and watching for job posting that are closed. 
-
+Nomad is a Windows desktop application that allows the user to quickly manage their career search for Avanade job postings. For the professional seeking a career at Avanade it's a great tool for finding new job postings and watching for job postings as they are filled. 
 This project is neither sponsored or endorsed by Avanade.
 
 The program downloads the latest 1,000 job postings from Avanade.com in JSON format into a file automatically formatted for today's date and time stamp.
