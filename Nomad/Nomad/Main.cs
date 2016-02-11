@@ -12,9 +12,9 @@ namespace Nomad
         {
             InitializeComponent();
             dm = new DataManager();
+            startupLoadFiles();
         }
-
-
+        
         private string GetFileName(string file)
         {
             string[] FileParts = file.Split('\\');
@@ -26,6 +26,14 @@ namespace Nomad
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
             Application.DoEvents();
+        }
+
+        private void startupLoadFiles()
+        {
+            ClearGrid();
+            dm.startupLoadFiles(dataGridView1);
+            label1.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File1FileName), dm.GetFileLength1);
+            label2.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File2FileName), dm.GetFileLength2);
         }
 
         private void getFile1()
@@ -108,7 +116,6 @@ namespace Nomad
             toolStripStatusLabel1.Text = string.Empty;
             label1.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File1FileName), dm.GetFileLength1);
             label2.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File2FileName), dm.GetFileLength2);
-
         }
 
         private void btnFilterClear_Click(object sender, EventArgs e)

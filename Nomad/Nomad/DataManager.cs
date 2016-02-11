@@ -91,6 +91,41 @@ namespace Nomad
             ToggleNotInterestedRows(dataGridView1);
         }
 
+        public void startupLoadFiles(DataGridView dataGridView1)
+        {
+            // get all JSON job files
+            string[] files = Directory.GetFiles(@".\", "*.json");
+
+            if (files.Length >= 2)
+            {
+                File1FileName = files[files.Length - 2];
+                string data = File.ReadAllText(File1FileName);
+                File1Jobs = JsonConvert.DeserializeObject<JSONJobs>(data);
+
+                File2FileName = files[files.Length - 1];
+                string data2 = File.ReadAllText(File2FileName);
+                File2Jobs = JsonConvert.DeserializeObject<JSONJobs>(data2);
+            }
+            else if (files.Length == 1)
+            {
+                File2FileName = files[files.Length - 1];
+                string data2 = File.ReadAllText(File2FileName);
+                File2Jobs = JsonConvert.DeserializeObject<JSONJobs>(data2);
+
+                File1Jobs = File2Jobs;
+                File1FileName = File2FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            CompareFiles(dataGridView1);
+            HideNotInterested = true;
+            ToggleNotInterestedRows(dataGridView1);
+
+        }
+
         public void CreateNewFile(DataGridView dataGridView1)
         {
             DateTime dt = DateTime.Now;
