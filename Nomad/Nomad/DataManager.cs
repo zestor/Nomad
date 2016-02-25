@@ -430,5 +430,51 @@ namespace Nomad
 
             File.WriteAllText(NOT_INTERESTED_FILE_NAME, outdata);
         }
+
+        public void InterestedAllUsOpenLocationJobs(DataGridView dataGridView1)
+        {
+            bool checkForDict = true;
+
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                string slug = (string)r.Cells[GRID_POS_SLUG].Value;
+                string country = (string)r.Cells[GRID_POS_COUNTRY].Value;
+                string state = (string)r.Cells[GRID_POS_STATE].Value;
+                string city = (string)r.Cells[GRID_POS_CITY].Value;
+
+                if (
+                    (country == "United States" && slug != null && state == null) ||
+                    (country == "United States" && slug != null && state == "North Carolina" && city == "Charlotte")
+                    )
+                {
+                    if (checkForDict && NotInterestedDict == null)
+                    {
+                        checkForDict = false;
+                        NotInterestedDict = new Dictionary<string, string>();
+                    }
+
+                    if (NotInterestedDict.ContainsKey(slug))
+                    {
+                        NotInterestedDict.Remove(slug);
+                    }
+                }
+            }
+
+            string outdata = string.Empty;
+            foreach (string key in NotInterestedDict.Keys)
+            {
+                if (outdata == string.Empty)
+                {
+                    outdata += key;
+                }
+                else
+                {
+                    outdata += ";" + key;
+                }
+            }
+
+            File.WriteAllText(NOT_INTERESTED_FILE_NAME, outdata);
+        }
+
     }
 }

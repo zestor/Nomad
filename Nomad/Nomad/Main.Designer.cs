@@ -60,6 +60,7 @@
             this.openFile2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compareFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -216,6 +217,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -271,7 +273,7 @@
             // 
             // btnHideNotInterested
             // 
-            this.btnHideNotInterested.Location = new System.Drawing.Point(311, 84);
+            this.btnHideNotInterested.Location = new System.Drawing.Point(320, 84);
             this.btnHideNotInterested.Name = "btnHideNotInterested";
             this.btnHideNotInterested.Size = new System.Drawing.Size(118, 20);
             this.btnHideNotInterested.TabIndex = 10;
@@ -281,9 +283,9 @@
             // 
             // btnNotInterested
             // 
-            this.btnNotInterested.Location = new System.Drawing.Point(187, 84);
+            this.btnNotInterested.Location = new System.Drawing.Point(178, 85);
             this.btnNotInterested.Name = "btnNotInterested";
-            this.btnNotInterested.Size = new System.Drawing.Size(118, 20);
+            this.btnNotInterested.Size = new System.Drawing.Size(84, 20);
             this.btnNotInterested.TabIndex = 9;
             this.btnNotInterested.Text = "Not Interested";
             this.btnNotInterested.UseVisualStyleBackColor = true;
@@ -351,30 +353,40 @@
             // openFile1ToolStripMenuItem
             // 
             this.openFile1ToolStripMenuItem.Name = "openFile1ToolStripMenuItem";
-            this.openFile1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openFile1ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.openFile1ToolStripMenuItem.Text = "Open File 1";
             this.openFile1ToolStripMenuItem.Click += new System.EventHandler(this.openFile1ToolStripMenuItem_Click);
             // 
             // openFile2ToolStripMenuItem
             // 
             this.openFile2ToolStripMenuItem.Name = "openFile2ToolStripMenuItem";
-            this.openFile2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openFile2ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.openFile2ToolStripMenuItem.Text = "Open File 2";
             this.openFile2ToolStripMenuItem.Click += new System.EventHandler(this.openFile2ToolStripMenuItem_Click);
             // 
             // compareFilesToolStripMenuItem
             // 
             this.compareFilesToolStripMenuItem.Name = "compareFilesToolStripMenuItem";
-            this.compareFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compareFilesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.compareFilesToolStripMenuItem.Text = "Compare Files";
             this.compareFilesToolStripMenuItem.Click += new System.EventHandler(this.compareFilesToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(268, 85);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(46, 20);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "US";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Main
             // 
@@ -441,5 +453,6 @@
         private System.Windows.Forms.ToolStripMenuItem openFile1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFile2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compareFilesToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
