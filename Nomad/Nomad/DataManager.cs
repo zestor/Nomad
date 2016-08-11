@@ -140,15 +140,47 @@ namespace Nomad
 
             // download 1,000 jobs from avanade careers right now
             string localFilename = @".\" + string.Format("{0:MMddyy HHmmss}.json", dt);
-            string url = @"https://careers.avanade.com/api/jobs?brand=experienced,both&limit=1000&offset=0&page=1";
-            WebClient client = new WebClient();
-            client.DownloadFile(url, localFilename);
-            File2FileName = localFilename;
-
-            // load the downloaded jobs into File2Jobs
-            string data = File.ReadAllText(File2FileName);
-            File2Jobs = JsonConvert.DeserializeObject<JSONJobs>(data);
             
+            List<JSONJob> totalJobs = null;
+
+            int joboffset = 0;
+            while (true)
+            {
+                string url = @"https://careers.avanade.com/api/jobs?brand=experienced,both&limit=100&offset={0}&page=1";
+                url = string.Format(url, joboffset);
+
+                WebClient client = new WebClient();
+                client.DownloadFile(url, localFilename);
+                File2FileName = localFilename;
+
+                // load the downloaded jobs into File2Jobs
+                string data = File.ReadAllText(File2FileName);
+                File2Jobs = JsonConvert.DeserializeObject<JSONJobs>(data);
+
+                if (File2Jobs.jobs.Count<JSONJob>() == 0)
+                {
+                    break;
+                }
+
+                if (totalJobs == null)
+                {
+                    totalJobs = File2Jobs.jobs.ToList<JSONJob>();
+                }
+                else
+                {
+                    foreach (var job in File2Jobs.jobs)
+                    {
+                        totalJobs.Add(job);
+                    }
+                }
+
+                joboffset += 100;
+            }
+
+            File2Jobs = new JSONJobs();
+            File2Jobs.jobs = totalJobs.ToArray<JSONJob>();
+            File.WriteAllText(localFilename,JsonConvert.SerializeObject(File2Jobs));
+                        
             // get all JSON job files
             string[] files = Directory.GetFiles(@".\", "*.json");
 
