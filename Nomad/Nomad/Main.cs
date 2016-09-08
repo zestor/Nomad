@@ -110,9 +110,9 @@ namespace Nomad
         {
             ClearGrid();
 
-            toolStripStatusLabel1.Text = "Downloading 1,000 Jobs Please Wait ...";
+            toolStripStatusLabel1.Text = "Stared Downloading Jobs Please Wait ...";
             Application.DoEvents();
-            dm.CreateNewFile(dataGridView1);
+            dm.CreateNewFile(dataGridView1, toolStripStatusLabel1);
             toolStripStatusLabel1.Text = string.Empty;
             label1.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File1FileName), dm.GetFileLength1);
             label2.Text = string.Format("[{0}] Contains {1} Jobs", GetFileName(dm.File2FileName), dm.GetFileLength2);

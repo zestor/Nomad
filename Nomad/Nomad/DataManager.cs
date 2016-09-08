@@ -127,7 +127,7 @@ namespace Nomad
 
         }
 
-        public void CreateNewFile(DataGridView dataGridView1)
+        public void CreateNewFile(DataGridView dataGridView1, ToolStripStatusLabel toolstripstatuslabel)
         {
             DateTime dt = DateTime.Now;
 
@@ -148,6 +148,9 @@ namespace Nomad
             {
                 string url = @"https://careers.avanade.com/api/jobs?brand=experienced,both&limit=100&offset={0}&page=1";
                 url = string.Format(url, joboffset);
+
+                toolstripstatuslabel.Text = string.Format("Requesting JSON file offset {0}... Please Wait ...", joboffset);
+                Application.DoEvents();
 
                 WebClient client = new WebClient();
                 client.DownloadFile(url, localFilename);
@@ -175,7 +178,11 @@ namespace Nomad
                 }
 
                 joboffset += 100;
+
             }
+
+            toolstripstatuslabel.Text = string.Format("Downloaded {0} Jobs Please Wait ...", totalJobs.Count);
+            Application.DoEvents();
 
             File2Jobs = new JSONJobs();
             File2Jobs.jobs = totalJobs.ToArray<JSONJob>();
